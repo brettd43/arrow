@@ -142,6 +142,15 @@ class TestItalianLocales:
 
         assert locale.ordinal_number(1) == "1º"
 
+    def test_format_timeframe(self):
+        locale = locales.ItalianLocale()
+        assert locale._format_timeframe("now", 0) == "adesso"
+        assert locale._format_timeframe("second", 1) == "un secondo"
+        assert locale._format_timeframe("seconds", 3) == "3 qualche secondo"
+        assert locale._format_timeframe("week", 1) == "una settimana"
+        assert locale._format_timeframe("weeks", 3) == "3 settimane"
+        assert locale._format_timeframe("weeks", 5) == "5 settimane"
+
 
 class TestSpanishLocales:
     def test_ordinal_number(self):
